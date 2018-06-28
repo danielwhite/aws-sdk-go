@@ -90,8 +90,6 @@ func (b *xmlBuilder) buildStruct(value reflect.Value, current *XMLNode, tag refl
 		return nil
 	}
 
-	fieldAdded := false
-
 	// unwrap payloads
 	if payload := tag.Get("payload"); payload != "" {
 		field, _ := value.Type().FieldByName(payload)
@@ -149,13 +147,9 @@ func (b *xmlBuilder) buildStruct(value reflect.Value, current *XMLNode, tag refl
 		if err := b.buildValue(member, child, mTag); err != nil {
 			return err
 		}
-
-		fieldAdded = true
 	}
 
-	if fieldAdded { // only append this child if we have one ore more valid members
-		current.AddChild(child)
-	}
+	current.AddChild(child)
 
 	return nil
 }

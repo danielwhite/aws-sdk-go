@@ -5194,6 +5194,327 @@ const (
 	EnumType1 = "1"
 )
 
+// InputService26ProtocolTest provides the API operation methods for making requests to
+// . See this package's package overview docs
+// for details on the service.
+//
+// InputService26ProtocolTest methods are safe to use concurrently. It is not safe to
+// modify mutate any of the struct's properties though.
+type InputService26ProtocolTest struct {
+	*client.Client
+}
+
+// New creates a new instance of the InputService26ProtocolTest client with a session.
+// If additional configuration is needed for the client instance use the optional
+// aws.Config parameter to add your extra config.
+//
+// Example:
+//     // Create a InputService26ProtocolTest client from just a session.
+//     svc := inputservice26protocoltest.New(mySession)
+//
+//     // Create a InputService26ProtocolTest client with additional configuration
+//     svc := inputservice26protocoltest.New(mySession, aws.NewConfig().WithRegion("us-west-2"))
+func NewInputService26ProtocolTest(p client.ConfigProvider, cfgs ...*aws.Config) *InputService26ProtocolTest {
+	c := p.ClientConfig("inputservice26protocoltest", cfgs...)
+	return newInputService26ProtocolTestClient(*c.Config, c.Handlers, c.Endpoint, c.SigningRegion, c.SigningName)
+}
+
+// newClient creates, initializes and returns a new service client instance.
+func newInputService26ProtocolTestClient(cfg aws.Config, handlers request.Handlers, endpoint, signingRegion, signingName string) *InputService26ProtocolTest {
+	svc := &InputService26ProtocolTest{
+		Client: client.New(
+			cfg,
+			metadata.ClientInfo{
+				ServiceName:   "inputservice26protocoltest",
+				ServiceID:     "InputService26ProtocolTest",
+				SigningName:   signingName,
+				SigningRegion: signingRegion,
+				Endpoint:      endpoint,
+				APIVersion:    "2014-01-01",
+			},
+			handlers,
+		),
+	}
+
+	// Handlers
+	svc.Handlers.Sign.PushBackNamed(v4.SignRequestHandler)
+	svc.Handlers.Build.PushBackNamed(restxml.BuildHandler)
+	svc.Handlers.Unmarshal.PushBackNamed(restxml.UnmarshalHandler)
+	svc.Handlers.UnmarshalMeta.PushBackNamed(restxml.UnmarshalMetaHandler)
+	svc.Handlers.UnmarshalError.PushBackNamed(restxml.UnmarshalErrorHandler)
+
+	return svc
+}
+
+// newRequest creates a new request for a InputService26ProtocolTest operation and runs any
+// custom request initialization.
+func (c *InputService26ProtocolTest) newRequest(op *request.Operation, params, data interface{}) *request.Request {
+	req := c.NewRequest(op, params, data)
+
+	return req
+}
+
+const opInputService26TestCaseOperation1 = "OperationName"
+
+// InputService26TestCaseOperation1Request generates a "aws/request.Request" representing the
+// client's request for the InputService26TestCaseOperation1 operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfuly.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See InputService26TestCaseOperation1 for more information on using the InputService26TestCaseOperation1
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//
+//    // Example sending a request using the InputService26TestCaseOperation1Request method.
+//    req, resp := client.InputService26TestCaseOperation1Request(params)
+//
+//    err := req.Send()
+//    if err == nil { // resp is now filled
+//        fmt.Println(resp)
+//    }
+func (c *InputService26ProtocolTest) InputService26TestCaseOperation1Request(input *InputService26TestShapeInputService26TestCaseOperation3Input) (req *request.Request, output *InputService26TestShapeInputService26TestCaseOperation1Output) {
+	op := &request.Operation{
+		Name:       opInputService26TestCaseOperation1,
+		HTTPMethod: "PUT",
+		HTTPPath:   "/2014-01-01/hostedzone",
+	}
+
+	if input == nil {
+		input = &InputService26TestShapeInputService26TestCaseOperation3Input{}
+	}
+
+	output = &InputService26TestShapeInputService26TestCaseOperation1Output{}
+	req = c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restxml.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	return
+}
+
+// InputService26TestCaseOperation1 API operation for .
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for 's
+// API operation InputService26TestCaseOperation1 for usage and error information.
+func (c *InputService26ProtocolTest) InputService26TestCaseOperation1(input *InputService26TestShapeInputService26TestCaseOperation3Input) (*InputService26TestShapeInputService26TestCaseOperation1Output, error) {
+	req, out := c.InputService26TestCaseOperation1Request(input)
+	return out, req.Send()
+}
+
+// InputService26TestCaseOperation1WithContext is the same as InputService26TestCaseOperation1 with the addition of
+// the ability to pass a context and additional request options.
+//
+// See InputService26TestCaseOperation1 for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *InputService26ProtocolTest) InputService26TestCaseOperation1WithContext(ctx aws.Context, input *InputService26TestShapeInputService26TestCaseOperation3Input, opts ...request.Option) (*InputService26TestShapeInputService26TestCaseOperation1Output, error) {
+	req, out := c.InputService26TestCaseOperation1Request(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+const opInputService26TestCaseOperation2 = "OperationName"
+
+// InputService26TestCaseOperation2Request generates a "aws/request.Request" representing the
+// client's request for the InputService26TestCaseOperation2 operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfuly.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See InputService26TestCaseOperation2 for more information on using the InputService26TestCaseOperation2
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//
+//    // Example sending a request using the InputService26TestCaseOperation2Request method.
+//    req, resp := client.InputService26TestCaseOperation2Request(params)
+//
+//    err := req.Send()
+//    if err == nil { // resp is now filled
+//        fmt.Println(resp)
+//    }
+func (c *InputService26ProtocolTest) InputService26TestCaseOperation2Request(input *InputService26TestShapeInputService26TestCaseOperation3Input) (req *request.Request, output *InputService26TestShapeInputService26TestCaseOperation2Output) {
+	op := &request.Operation{
+		Name:       opInputService26TestCaseOperation2,
+		HTTPMethod: "PUT",
+		HTTPPath:   "/2014-01-01/hostedzone",
+	}
+
+	if input == nil {
+		input = &InputService26TestShapeInputService26TestCaseOperation3Input{}
+	}
+
+	output = &InputService26TestShapeInputService26TestCaseOperation2Output{}
+	req = c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restxml.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	return
+}
+
+// InputService26TestCaseOperation2 API operation for .
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for 's
+// API operation InputService26TestCaseOperation2 for usage and error information.
+func (c *InputService26ProtocolTest) InputService26TestCaseOperation2(input *InputService26TestShapeInputService26TestCaseOperation3Input) (*InputService26TestShapeInputService26TestCaseOperation2Output, error) {
+	req, out := c.InputService26TestCaseOperation2Request(input)
+	return out, req.Send()
+}
+
+// InputService26TestCaseOperation2WithContext is the same as InputService26TestCaseOperation2 with the addition of
+// the ability to pass a context and additional request options.
+//
+// See InputService26TestCaseOperation2 for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *InputService26ProtocolTest) InputService26TestCaseOperation2WithContext(ctx aws.Context, input *InputService26TestShapeInputService26TestCaseOperation3Input, opts ...request.Option) (*InputService26TestShapeInputService26TestCaseOperation2Output, error) {
+	req, out := c.InputService26TestCaseOperation2Request(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+const opInputService26TestCaseOperation3 = "OperationName"
+
+// InputService26TestCaseOperation3Request generates a "aws/request.Request" representing the
+// client's request for the InputService26TestCaseOperation3 operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfuly.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See InputService26TestCaseOperation3 for more information on using the InputService26TestCaseOperation3
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//
+//    // Example sending a request using the InputService26TestCaseOperation3Request method.
+//    req, resp := client.InputService26TestCaseOperation3Request(params)
+//
+//    err := req.Send()
+//    if err == nil { // resp is now filled
+//        fmt.Println(resp)
+//    }
+func (c *InputService26ProtocolTest) InputService26TestCaseOperation3Request(input *InputService26TestShapeInputService26TestCaseOperation3Input) (req *request.Request, output *InputService26TestShapeInputService26TestCaseOperation3Output) {
+	op := &request.Operation{
+		Name:       opInputService26TestCaseOperation3,
+		HTTPMethod: "PUT",
+		HTTPPath:   "/2014-01-01/hostedzone",
+	}
+
+	if input == nil {
+		input = &InputService26TestShapeInputService26TestCaseOperation3Input{}
+	}
+
+	output = &InputService26TestShapeInputService26TestCaseOperation3Output{}
+	req = c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restxml.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	return
+}
+
+// InputService26TestCaseOperation3 API operation for .
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for 's
+// API operation InputService26TestCaseOperation3 for usage and error information.
+func (c *InputService26ProtocolTest) InputService26TestCaseOperation3(input *InputService26TestShapeInputService26TestCaseOperation3Input) (*InputService26TestShapeInputService26TestCaseOperation3Output, error) {
+	req, out := c.InputService26TestCaseOperation3Request(input)
+	return out, req.Send()
+}
+
+// InputService26TestCaseOperation3WithContext is the same as InputService26TestCaseOperation3 with the addition of
+// the ability to pass a context and additional request options.
+//
+// See InputService26TestCaseOperation3 for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *InputService26ProtocolTest) InputService26TestCaseOperation3WithContext(ctx aws.Context, input *InputService26TestShapeInputService26TestCaseOperation3Input, opts ...request.Option) (*InputService26TestShapeInputService26TestCaseOperation3Output, error) {
+	req, out := c.InputService26TestCaseOperation3Request(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+type InputService26TestShapeContainerType struct {
+	_ struct{} `type:"structure"`
+
+	Empty *InputService26TestShapeEmptyType `locationName:"Empty-Type" type:"structure"`
+}
+
+// SetEmpty sets the Empty field's value.
+func (s *InputService26TestShapeContainerType) SetEmpty(v *InputService26TestShapeEmptyType) *InputService26TestShapeContainerType {
+	s.Empty = v
+	return s
+}
+
+type InputService26TestShapeEmptyType struct {
+	_ struct{} `locationName:"Empty-Type" type:"structure"`
+}
+
+type InputService26TestShapeInputService26TestCaseOperation1Output struct {
+	_ struct{} `type:"structure"`
+}
+
+type InputService26TestShapeInputService26TestCaseOperation2Output struct {
+	_ struct{} `type:"structure"`
+}
+
+type InputService26TestShapeInputService26TestCaseOperation3Input struct {
+	_ struct{} `type:"structure"`
+
+	Container *InputService26TestShapeContainerType `type:"structure"`
+
+	Name *string `type:"string"`
+}
+
+// SetContainer sets the Container field's value.
+func (s *InputService26TestShapeInputService26TestCaseOperation3Input) SetContainer(v *InputService26TestShapeContainerType) *InputService26TestShapeInputService26TestCaseOperation3Input {
+	s.Container = v
+	return s
+}
+
+// SetName sets the Name field's value.
+func (s *InputService26TestShapeInputService26TestCaseOperation3Input) SetName(v string) *InputService26TestShapeInputService26TestCaseOperation3Input {
+	s.Name = &v
+	return s
+}
+
+type InputService26TestShapeInputService26TestCaseOperation3Output struct {
+	_ struct{} `type:"structure"`
+}
+
 //
 // Tests begin here
 //
@@ -6363,6 +6684,94 @@ func TestInputService25ProtocolTestEnumCase2(t *testing.T) {
 
 	// assert URL
 	awstesting.AssertURL(t, "https://test/path", r.URL.String())
+
+	// assert headers
+
+}
+
+func TestInputService26ProtocolTestEmptyStructureWithLocationNameCase1(t *testing.T) {
+	svc := NewInputService26ProtocolTest(unit.Session, &aws.Config{Endpoint: aws.String("https://test")})
+	input := &InputService26TestShapeInputService26TestCaseOperation3Input{
+		Name: aws.String("foo"),
+	}
+	req, _ := svc.InputService26TestCaseOperation1Request(input)
+	r := req.HTTPRequest
+
+	// build request
+	restxml.Build(req)
+	if req.Error != nil {
+		t.Errorf("expect no error, got %v", req.Error)
+	}
+
+	// assert body
+	if r.Body == nil {
+		t.Errorf("expect body not to be nil")
+	}
+	body := util.SortXML(r.Body)
+	awstesting.AssertXML(t, `<Name>foo</Name>`, util.Trim(string(body)), InputService26TestShapeInputService26TestCaseOperation3Input{})
+
+	// assert URL
+	awstesting.AssertURL(t, "https://test/2014-01-01/hostedzone", r.URL.String())
+
+	// assert headers
+
+}
+
+func TestInputService26ProtocolTestEmptyStructureWithLocationNameCase2(t *testing.T) {
+	svc := NewInputService26ProtocolTest(unit.Session, &aws.Config{Endpoint: aws.String("https://test")})
+	input := &InputService26TestShapeInputService26TestCaseOperation3Input{
+		Container: &InputService26TestShapeContainerType{},
+		Name:      aws.String("foo"),
+	}
+	req, _ := svc.InputService26TestCaseOperation2Request(input)
+	r := req.HTTPRequest
+
+	// build request
+	restxml.Build(req)
+	if req.Error != nil {
+		t.Errorf("expect no error, got %v", req.Error)
+	}
+
+	// assert body
+	if r.Body == nil {
+		t.Errorf("expect body not to be nil")
+	}
+	body := util.SortXML(r.Body)
+	awstesting.AssertXML(t, `<Container></Container><Name>foo</Name>`, util.Trim(string(body)), InputService26TestShapeInputService26TestCaseOperation3Input{})
+
+	// assert URL
+	awstesting.AssertURL(t, "https://test/2014-01-01/hostedzone", r.URL.String())
+
+	// assert headers
+
+}
+
+func TestInputService26ProtocolTestEmptyStructureWithLocationNameCase3(t *testing.T) {
+	svc := NewInputService26ProtocolTest(unit.Session, &aws.Config{Endpoint: aws.String("https://test")})
+	input := &InputService26TestShapeInputService26TestCaseOperation3Input{
+		Container: &InputService26TestShapeContainerType{
+			Empty: &InputService26TestShapeEmptyType{},
+		},
+		Name: aws.String("foo"),
+	}
+	req, _ := svc.InputService26TestCaseOperation3Request(input)
+	r := req.HTTPRequest
+
+	// build request
+	restxml.Build(req)
+	if req.Error != nil {
+		t.Errorf("expect no error, got %v", req.Error)
+	}
+
+	// assert body
+	if r.Body == nil {
+		t.Errorf("expect body not to be nil")
+	}
+	body := util.SortXML(r.Body)
+	awstesting.AssertXML(t, `<Container><Empty-Type></Empty-Type></Container><Name>foo</Name>`, util.Trim(string(body)), InputService26TestShapeInputService26TestCaseOperation3Input{})
+
+	// assert URL
+	awstesting.AssertURL(t, "https://test/2014-01-01/hostedzone", r.URL.String())
 
 	// assert headers
 

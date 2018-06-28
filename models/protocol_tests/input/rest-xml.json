@@ -1784,5 +1784,112 @@
         }
       }
     ]
+  },
+  {
+    "description": "Empty structure with location name",
+    "metadata": {
+      "protocol": "rest-xml",
+      "apiVersion": "2014-01-01"
+    },
+    "shapes": {
+      "InputShape": {
+        "type": "structure",
+        "members": {
+          "Container": {
+            "shape": "ContainerType"
+          },
+          "Name": {
+            "shape": "StringType"
+          }
+        }
+      },
+      "ContainerType": {
+        "type": "structure",
+        "members": {
+          "Empty": {
+            "shape": "EmptyType",
+            "locationName": "Empty-Type"
+          }
+        }
+      },
+      "EmptyType": {
+        "type": "structure",
+        "members": {
+        },
+        "locationName":"Empty-Type"
+      },
+      "StringType": {
+        "type": "string"
+      }
+    },
+    "cases": [
+      {
+        "given": {
+          "http": {
+            "method": "PUT",
+            "requestUri": "/2014-01-01/hostedzone"
+          },
+          "input": {
+            "shape": "InputShape"
+          },
+          "name": "OperationName"
+        },
+        "params": {
+          "Name": "foo"
+        },
+        "serialized": {
+          "method": "PUT",
+          "body": "<Name>foo</Name>",
+          "uri": "/2014-01-01/hostedzone",
+          "headers": {}
+        }
+      },
+      {
+        "given": {
+          "http": {
+            "method": "PUT",
+            "requestUri": "/2014-01-01/hostedzone"
+          },
+          "input": {
+            "shape": "InputShape"
+          },
+          "name": "OperationName"
+        },
+        "params": {
+          "Name": "foo",
+          "Container": {}
+        },
+        "serialized": {
+          "method": "PUT",
+          "body": "<Name>foo</Name><Container></Container>",
+          "uri": "/2014-01-01/hostedzone",
+          "headers": {}
+        }
+      },
+      {
+        "given": {
+          "http": {
+            "method": "PUT",
+            "requestUri": "/2014-01-01/hostedzone"
+          },
+          "input": {
+            "shape": "InputShape"
+          },
+          "name": "OperationName"
+        },
+        "params": {
+          "Name": "foo",
+          "Container": {
+            "Empty": {}
+          }
+        },
+        "serialized": {
+          "method": "PUT",
+          "body": "<Name>foo</Name><Container><Empty-Type></Empty-Type></Container>",
+          "uri": "/2014-01-01/hostedzone",
+          "headers": {}
+        }
+      }
+    ]
   }
 ]
